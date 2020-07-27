@@ -121,9 +121,12 @@ class Superwar {
 
     // Check for fight
     isFight = () => {
-        // Type your code here
-
+        // Type your code here      
         // return  'clash' or 'peace';
+        if('clash' == 'clash')
+            return 'clash';        
+        else
+            return 'peace';                    
     }
 
     // Fight
@@ -131,7 +134,8 @@ class Superwar {
         // Filtered the selected players and calculate score
         // Should return HTML element with score
         // Type your code here
-
+        let player=this.players.selectedPlayer(player);
+        let Score=this.score.selectedPlayer(this.score)
         if (this.checkWin() !== 'endure')
             setTimeout(() => this.announceWinner(score), 100);
     }
@@ -140,8 +144,13 @@ class Superwar {
     calculateScore = () => {
         // Calculate and return the total score of teams
         // Type your code here
-
-        return score;
+        let score=this.players.reduce((score,player) => {
+            score[player,type]+=player.wins;
+            return score;
+        },{
+            'hero':0,
+            'villain':0
+        });
     }
 
     // Check whether there is a win
@@ -149,15 +158,21 @@ class Superwar {
         // Find the winner if exists return type hero or villain
         // If winner dosen't exists then return endure
         // Type your code here
-
+        let heroStrength =this.totalStrength('hero');
+        let villainStrength = this.totalStrength('villain')
+       // return heroStrength == 0? 'villain':villainStrength == 0?
+        //'hero':'endure';{
+        if (this.checkWin() !== 'endure')
+            setTimeout(() => this.announceWinner(score), 100);
+        
       return result;
     }
 
     // Find total strength of a team
-    totalStrength = (type) => {
+    totalStrength = (strength) => {
         // Calculate and return the total strength of the team
         // Type your code here
-
+        let teams = this.strength.totalStrength('heroes', 'villain');
         return strength;
     }
 
